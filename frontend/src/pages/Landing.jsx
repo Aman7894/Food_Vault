@@ -22,7 +22,7 @@ const Landing = () => {
         if (category && category !== 'All') queryParams.push(`category=${category}`);
         
         const queryString = queryParams.length > 0 ? `?${queryParams.join('&')}` : '';
-        const res = await axios.get(`http://localhost:5000/api/v1/products${queryString}`);
+        const res = await axios.get(`${API_URL}/products${queryString}`);
         setProducts(res.data.data);
       } catch (error) {
         console.error(error);

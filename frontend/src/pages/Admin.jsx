@@ -52,7 +52,7 @@ const Admin = () => {
 
   const handleUpdateOrderStatus = async (orderId, status) => {
     try {
-      await axios.put(`http://localhost:5000/api/v1/orders/${orderId}/status`, { status });
+      await axios.put(`${API_URL}/orders/${orderId}/status`, { status });
       fetchAdminData();
     } catch (error) {
       console.error(error);

@@ -14,7 +14,7 @@ const OrderStatus = () => {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/v1/orders/${id}`);
+        const res = await axios.get(`${API_URL}/orders/${id}`);
         setOrder(res.data.data);
       } catch (err) {
         setError('Order not found or you are not authorized to view it.');
