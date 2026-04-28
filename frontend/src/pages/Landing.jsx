@@ -3,6 +3,7 @@ import axios from 'axios';
 import FoodCard from '../components/FoodCard';
 import Loader from '../components/Loader';
 import { Search } from 'lucide-react';
+import API_URL from '../api/apiConfig';
 
 const Landing = () => {
   const [products, setProducts] = useState([]);

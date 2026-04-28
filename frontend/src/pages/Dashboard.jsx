@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import Loader from '../components/Loader';
 import { Package, MapPin, Settings } from 'lucide-react';
+import API_URL from '../api/apiConfig';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -12,7 +13,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/v1/orders/myorders');
+        const res = await axios.get(`${API_URL}/orders/myorders`);
         setOrders(res.data.data);
       } catch (error) {
         console.error(error);

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from '../api/apiConfig';
 
 const AuthContext = createContext();
 
@@ -21,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     const checkUser = async () => {
       if (token) {
         try {
-          const res = await axios.get('http://localhost:5000/api/v1/auth/profile');
+          const res = await axios.get(`${API_URL}/auth/profile`);
           setUser(res.data.data);
         } catch (error) {
           console.error(error);
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children }) => {
   }, [token]);
 
   const login = async (email, password) => {
-    const res = await axios.post('http://localhost:5000/api/v1/auth/login', { email, password });
+    const res = await axios.post(`${API_URL}/auth/login`, { email, password });
     localStorage.setItem('token', res.data.data.token);
     setToken(res.data.data.token);
     setUser(res.data.data);
@@ -44,7 +45,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (name, email, password) => {
-    const res = await axios.post('http://localhost:5000/api/v1/auth/register', { name, email, password });
+    const res = await axios.post(`${API_URL}/auth/register`, { name, email, password });
     localStorage.setItem('token', res.data.data.token);
     setToken(res.data.data.token);
     setUser(res.data.data);

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import Loader from '../components/Loader';
 import { PackageSearch, Users, ShoppingBag, Plus } from 'lucide-react';
+import API_URL from '../api/apiConfig';
 
 const Admin = () => {
   const { user } = useAuth();
@@ -21,8 +22,8 @@ const Admin = () => {
     setLoading(true);
     try {
       const [prodRes, ordRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/v1/products'),
-        axios.get('http://localhost:5000/api/v1/orders')
+        axios.get(`${API_URL}/products`),
+        axios.get(`${API_URL}/orders`)
       ]);
       setProducts(prodRes.data.data);
       setOrders(ordRes.data.data);
@@ -39,7 +40,7 @@ const Admin = () => {
   const handleAddProduct = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/v1/products', newProduct);
+      await axios.post(`${API_URL}/products`, newProduct);
       setShowAddForm(false);
       setNewProduct({ name: '', description: '', price: '', category: 'Main Course', image: '' });
       fetchAdminData();

@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import Loader from '../components/Loader';
 import { CheckCircle2, Clock, Truck, PackageCheck, AlertCircle } from 'lucide-react';
+import API_URL from '../api/apiConfig';
 
 const OrderStatus = () => {
   const { id } = useParams();

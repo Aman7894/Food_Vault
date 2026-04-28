@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { Trash2, ShoppingBag, ArrowRight } from 'lucide-react';
+import API_URL from '../api/apiConfig';
 
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart, shippingAddress, saveShippingAddress } = useCart();
@@ -32,7 +33,7 @@ const CartPage = () => {
     saveShippingAddress({ address });
 
     try {
-      const res = await axios.post('http://localhost:5000/api/v1/orders', {
+      const res = await axios.post(`${API_URL}/orders`, {
         orderItems: cartItems,
         deliveryAddress: address,
         paymentMethod,
