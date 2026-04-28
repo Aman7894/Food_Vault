@@ -6,8 +6,12 @@ const connectDB = require('./config/db');
 
 // Load env vars
 dotenv.config({ override: true });
-console.log('Email configured:', process.env.EMAIL_USER ? 'YES' : 'NO');
-console.log('Email password:', process.env.EMAIL_PASS ? 'YES' : 'NO');
+console.log('--- Startup Config ---');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('MONGO_URI:', process.env.MONGO_URI ? 'LOADED' : 'MISSING');
+console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'LOADED' : 'MISSING');
+console.log('EMAIL_USER:', process.env.EMAIL_USER ? 'LOADED' : 'MISSING');
+console.log('----------------------');
 
 // Connect to database
 connectDB();
