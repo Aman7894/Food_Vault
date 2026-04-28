@@ -41,6 +41,7 @@ exports.registerUser = async (req, res) => {
       res.status(400).json({ success: false, error: 'Invalid user data' });
     }
   } catch (error) {
+    console.error('Registration Error:', error);
     res.status(500).json({ success: false, error: error.message });
   }
 };
@@ -69,6 +70,7 @@ exports.loginUser = async (req, res) => {
       res.status(401).json({ success: false, error: 'Invalid email or password' });
     }
   } catch (error) {
+    console.error('Login Error:', error);
     res.status(500).json({ success: false, error: error.message });
   }
 };
